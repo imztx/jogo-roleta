@@ -20,7 +20,7 @@ job-coverage:
     - coverage report
     - coverage html
     - mkdir -p public/
-    - my htmlcov public/coverage/
+    - mv htmlcov public/coverage/
   artifacts:
     paths:
       - public/
