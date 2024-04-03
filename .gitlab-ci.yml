@@ -16,7 +16,7 @@ job-coverage:
   script:
     - python --version
     - pip install coverage
-    - coverage run unittest
+    - coverage run -m unittest
     - coverage report
     - coverage html
     - mkdir -p public/
