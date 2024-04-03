@@ -1,0 +1,35 @@
+stages:
+  - build
+  - test
+  - deploy
+
+job-test:
+  stage: test
+  image: python
+  script:
+    - python --version
+    - python -m unittest
+
+job-coverage:
+  stage: test
+  image: python
+  script:
+    - python --version
+    - pip install coverage
+    - coverage run unittest
+    - coverage report
+    - coverage html
+    - mkdir -p public/
+    - my htmlcov public/coverage/
+  artifacts:
+    paths:
+      - public/
+
+pages:
+  stage: deploy
+  script: 
+    - mkdir -p public/
+    - echo '<h1>GitLab Pages</h1>' > public/index.html
+  artifacts:
+    paths:
+      - public/
