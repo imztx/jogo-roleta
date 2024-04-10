@@ -37,6 +37,18 @@ build-image:
     - docker:dind
 
 
+job-pydocs:
+  stage: build
+  image: python
+  script:
+    - python --version
+    - python -m pydoc -w roleta
+    - mkdir -p public/
+    - mv roleta.html public/
+  artifacts:
+    paths:
+      - public/
+
 pages:
   stage: deploy
   script: 
