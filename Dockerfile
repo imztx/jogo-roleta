@@ -4,4 +4,6 @@ WORKDIR /opt/roleta
 EXPOSE 8080
 RUN pip install django==5
 RUN pip install Pillow
+CMD ["python", "roleta/manage.py", "makemigrations"]
+CMD ["python", "roleta/manage.py", "migrate"]
 CMD ["python","manage.py", "runserver", "0.0.0.0:8080"]
