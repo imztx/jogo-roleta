@@ -25,6 +25,18 @@ job-coverage:
     paths:
       - public/
 
+
+build-image:
+  stage: build
+  image: docker:stable
+  script:
+    - docker build . -t $CI_REGISTRY_IMAGE
+    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    - docker push $CI_REGISTRY_IMAGE
+  services:
+    - docker:dind
+
+
 pages:
   stage: deploy
   script: 
