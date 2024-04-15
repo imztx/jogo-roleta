@@ -1,5 +1,6 @@
 from typing import Sequence
 from dataclasses import dataclass
+import math
 
 DEFAULT_NUMBERS = (
     0,
@@ -83,18 +84,20 @@ class Bet:
             return cls(value,{ begin, begin + 1, begin +3, begin + 4 })
         #raise Exception ('Aposta inválida')
     
-    """ @classmethod
+    @classmethod
     def create_duo(cls, value: float, duo: str):
-        begin, end = (duo.split(',')), (duo.split(','))
-        begin.sort(), begin.pop()
-        begin = int(begin[0])
-        end.sort(), end.pop(0)
-        end = int(end[0])
-        if (begin % 3 != 0 and 0 < begin < 36 and (end - begin == 1 or end - begin == 3)) or (begin % 3 == 0 and end % 3 == 0 and 0 < begin < 36 and end - begin == 3):
+        begin, end = int(duo.split(',')[0]), int(duo.split(',')[1])
+        plus_3_begin = 0
+        plus_3_end = 0
+        if not begin % 3:
+            plus_3_begin = 3
+        if not end % 3:
+            plus_3_end = 3
+        if abs(math.ceil(begin/3) - math.ceil(end/3)) + abs((begin % 3 + plus_3_begin) - (end % 3 + plus_3_end)) < 2:
             return cls(value, {begin, end})
-        raise Exception ('Aposta inválida') """
+        raise Exception ('Aposta inválida')
     
-    
+
 
 class Roleta:
     pass

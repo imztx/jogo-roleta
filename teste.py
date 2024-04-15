@@ -2,7 +2,7 @@ from unittest import TestCase
 from roleta import Bet
 from itertools import chain
 
-""" def all_2_horizontal():
+def all_2_horizontal():
     for l in range(3):
         yield from zip(range(1 + l, 32 + l, 3), range(4 + l, 35 + l, 3))
         
@@ -12,7 +12,7 @@ def all_2_vertical():
         yield c + 2, c + 3
         
 def all_2():
-    return chain(all_2_horizontal(), all_2_vertical()) """
+    return chain(all_2_horizontal(), all_2_vertical())
 
 class RoletaTest(TestCase):
 
@@ -74,16 +74,11 @@ class RoletaTest(TestCase):
         self.assertEqual((bet.numbers), {14,15,17,18})
         
     def test_duo_correct(self):
-        pass
-        """ dataset = dict(
-            (','.join(map(str, numbers)), set(numbers))
-            for numbers in all_2()
-        )
+        with self.assertRaises(Exception): 
+            Bet.create_duo(value=100, duo='6,7')
+        dataset = dict((','.join(map(str, numbers)), set(numbers)) for numbers in all_2())
         for input, expected in dataset.items():
             with self.subTest(f"Convert {input} to {expected}"):
-                bet = self.create_duo(0, input)
+                bet = Bet.create_duo(100, input)
                 self.assertIsInstance(bet, Bet)
-                self.assertEqual(bet.numbers, expected) """
-
-                    
-
+                self.assertEqual(bet.numbers, expected)
