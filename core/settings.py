@@ -49,6 +49,7 @@ CSRF_TRUSTED_ORIGINS = config(
 # Application definition
 
 INSTALLED_APPS = [
+    'lasvegas.apps.LasVegasConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
