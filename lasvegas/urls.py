@@ -6,5 +6,11 @@ from django.urls import path
 app_name = 'lasvegas'
 
 urlpatterns = [
-    path('my-wallet', views.wallet_detail, name='my-wallet'),
+    path('me-wallet', views.wallet_detail, name='my-wallet'),
+    path(
+        'me/movement/',
+        view=views.MovementListView.as_view(),
+        name='my-movement-list'
+     ),
+
 ]

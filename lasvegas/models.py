@@ -1,9 +1,8 @@
 from django.db import models
+from django.db.models import F
 from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-
-# Create your models here.
 
 
 class Wallet(models.Model):
@@ -18,9 +17,38 @@ class Wallet(models.Model):
         default=0.,
     )
 
+class Movement(models.Model):
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    wallet = models.ForeignKey(
+        Wallet,
+        on_delete=models.CASCADE,
+    )
+
+    description = models.TextField(
+
+    )
+
+    value = models.FloatField(
+
+    )
+
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_wallet(instance, created, raw, **kwargs):
     if raw or not created:
         return
     Wallet.objects.create(owner=instance)
+
+
+@receiver(post_save, sender=Movement)
+def update_wallet(instance, created, raw, **kwargs):
+    if raw or not created:
+        return
+    wallet = instance.wallet
+    wallet.quantity = F('quantity') + instance.value
+    wallet.save()

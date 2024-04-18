@@ -1,0 +1,13 @@
+{% load l10n %}
+<table>
+  <tbody>
+    {% for object in object_list %}
+      <tr>
+        <td>#{{ object.pk }}</td>
+        <td>{{ object.created_at|date:'SHORT_DATETIME_FORMAT' }}</td>
+        <td>{{ object.value|localize }}</td>
+        <td>{{ object.description }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

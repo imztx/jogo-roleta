@@ -1,5 +1,6 @@
 import django
 from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.test.utils import setup_databases, setup_test_environment
 if not apps.ready:
     django.setup() # Normal Django setup
@@ -10,3 +11,13 @@ if not apps.ready:
     # keepdb probably should be a setting inside vscode.
     # Our project takes an hour to run migrations from scratch, so we need keepdb, 
     # but normally no one wants to keep test databases around.
+
+
+def create_user():
+    User = get_user_model()
+    USER_COUNTER = User.objects.all().count()
+    return get_user_model().objects.create(
+        username=f'user{USER_COUNTER}',
+        email=f'user{USER_COUNTER}@localhost',
+    )
+
