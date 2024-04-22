@@ -1,3 +1,7 @@
+variables:
+  DJANGO_SETTINGS_MODULE: core.settings
+
+
 stages:
   - build
   - test
@@ -15,7 +19,7 @@ job-coverage:
   image: python
   script:
     - python --version
-    - pip install coverage
+    - pip install coverage django==5 dj-database-url python-decouple
     - coverage run -m unittest
     - coverage report
     - coverage html
