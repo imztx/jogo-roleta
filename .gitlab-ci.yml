@@ -12,8 +12,8 @@ job-test:
   image: python
   script:
     - python --version
-    - python -m unittest
     - pip install coverage django==5 dj-database-url python-decouple
+    - python -m unittest
 
 job-coverage:
   stage: test
