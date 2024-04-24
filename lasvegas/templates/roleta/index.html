@@ -1,0 +1,31 @@
+{% load static %}
+
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="{% static 'polls/roleta.css' %}">
+
+  <title>Roletaço do Caio</title>
+  <link rel="icon" href="{% static 'polls/roleta.png' %}" />
+  <script  src = "{% static 'polls/roleta.js' %}" ></script>
+</head>
+
+<body>
+  <div class="caixa_mesa">
+    <img src="{% static 'polls/mesa_com_roleta.png' %}" alt="" class="mesa">
+    <img src="{% static 'polls/roleta.png' %}" alt="" class="roleta" id="roleta">
+    <button id="botao_rodar" onclick="rodar_roleta()">Rodar a roleta</button>
+    <img src="{% static 'polls/bola.png' %}" alt="" class="bola" id="bola">
+    <h1 id="texto_controle1">Roleta:</h1>
+    <h1 id="texto_controle2">Bola:</h1>
+    <h1 id="texto_controle3">Diff:</h1>
+    <h1 id="texto_controle4">Casa:</h1>
+    <h1 id="texto_controle5">Cor:</h1>
+  </div>
+</body>
+
+
+</html>

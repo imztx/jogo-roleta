@@ -3,6 +3,8 @@ from django.db.models.query import QuerySet
 from lasvegas.models import Movement
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.template import loader
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -21,3 +23,9 @@ class MovementListView(LoginRequiredMixin, ListView):
     def get_queryset(self) -> QuerySet[Any]:
         return super().get_queryset() \
             .filter(wallet__owner=self.request.user)
+            
+def roleta(request):
+    template = loader.get_template("roleta/index.html")
+    return HttpResponse(template.render({}, request))
+
+
