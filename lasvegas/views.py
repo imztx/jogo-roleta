@@ -29,3 +29,6 @@ def roleta(request):
     return HttpResponse(template.render({}, request))
 
 
+def login(request):
+    template = loader.get_template("login/login.html")
+    return HttpResponse(template.render({}, request))

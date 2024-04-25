@@ -1,2 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load l10n humanize %}
 {{ object.quantity|localize}}
+
+
+<button message="Olá Mundo" class="btn btn-success">Olá Mundo</button>
+<button message="Olá Fim do Mundo" class="btn btn-danger">Olá Mundo</button>
+{% endblock %}

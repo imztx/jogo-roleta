@@ -1,5 +1,7 @@
+{% extends "base.html" %}
 {% load l10n %}
-<table>
+{% block content %}
+<table class="table table-striped">
   <tbody>
     {% for object in object_list %}
       <tr>
@@ -11,3 +13,4 @@
     {% endfor %}
   </tbody>
 </table>
+{% endblock %}
