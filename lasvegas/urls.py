@@ -8,8 +8,10 @@ app_name = 'lasvegas'
 urlpatterns = [
     path('me-wallet', views.wallet_detail, name='my-wallet'),
     path('me/movement/', view=views.MovementListView.as_view(), name='my-movement-list'),
-    path("roleta", views.roleta, name="index"),
-    path("login", views.login, name="login"),
+    path("roleta", views.roleta, name="roleta"),
+    path("login", views.user_login, name="login"),
+    path("cadastrar", views.cadastro, name="cadastrar"),
+    path('user_logout', views.user_logout, name="user_logout"),
 
 
 ]

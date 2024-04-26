@@ -8,7 +8,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-      <title>Login</title>
+      <title>Login - Cadastro</title>
 
     </head>
 
@@ -16,16 +16,15 @@
     </head>
   <body>
 
-    <h1>Pagina de Login</h1>
+    <h1>Pagina de cadastro</h1>
 
     <form method="POST" autocomplete="off">
 
         {% csrf_token %}
 
-        {{loginform.as_p}}
+        {{cadastroform.as_p}}
 
-        <input type="submit" value="Entrar">
-        <a href="{%url 'lasvegas:cadastrar' %}">Cadastrar</a>
+        <input type="submit" value="Cadastrar">
 
     </form>
 
