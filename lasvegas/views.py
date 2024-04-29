@@ -83,3 +83,8 @@ def cadastro(request):
     context = {'cadastroform':form}    
     
     return render(request, 'cadastro/cadastro.html', context=context)
+
+
+def tela_ini(request):
+    template = loader.get_template("tela_inicial/tela.html")
+    return HttpResponse(template.render({}, request))

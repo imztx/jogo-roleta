@@ -12,6 +12,7 @@ urlpatterns = [
     path("login", views.user_login, name="login"),
     path("cadastrar", views.cadastro, name="cadastrar"),
     path('user_logout', views.user_logout, name="user_logout"),
+    path('tela inicial', views.tela_ini, name="tela inicial"),
 
 
 ]
