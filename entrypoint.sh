@@ -1,5 +1,4 @@
-#! /usr/bin/sh -e
-. .venv/*/bin/activate
+#! /usr/bin/sh
 python manage.py migrate
 
 exec "$@"
