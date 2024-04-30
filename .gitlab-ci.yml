@@ -1,11 +1,37 @@
 variables:
   DJANGO_SETTINGS_MODULE: core.settings
+  POETRY_VIRTUALENVS_PATH: $CI_PROJECT_DIR/.venv
+
+default:
+  image: python:3.12
+  before_script:
+    - source .venv/*/bin/activate
+  cache: &global_cache
+    key:
+      files:
+        - poetry.lock
+    paths:
+      - .venv/
+    policy: pull
+
 
 
 stages:
   - build
+  - init
   - test
   - deploy
+
+init:
+  stage: init
+  before_script: []
+  script:
+    - pip install poetry
+    - poetry install
+  cache:
+    <<: *global_cache
+    policy: pull-push
+
 
 job-test:
   stage: test
@@ -17,10 +43,8 @@ job-test:
 
 job-coverage:
   stage: test
-  image: python
   script:
     - python --version
-    - pip install coverage django==5 dj-database-url python-decouple
     - coverage run -m unittest
     - coverage report
     - coverage html
@@ -34,16 +58,17 @@ job-coverage:
 build-image:
   stage: build
   image: docker:stable
+  before_script:
+    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+
   script:
     - docker build . -t $CI_REGISTRY_IMAGE
-    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker push $CI_REGISTRY_IMAGE
   services:
     - docker:dind
 
 job-pydocs:
   stage: build
-  image: python
   script:
     - python --version
     - python -m pydoc -w roleta

@@ -1,0 +1,47 @@
+#
+# Based on https://hub.docker.com/_/sonarqube
+#
+
+version: "3.7"
+
+services:
+
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:community
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
+  sonarscanner:
+    container_name: sonarscanner
+    image: sonarsource/sonar-scanner-cli
+    networks:
+      - sonarnet
+    volumes:
+      - ./:/usr/src
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      SONAR_HOST_URL: http://sonarqube:9000
+      SONAR_LOGIN: admin
+      SONAR_PASSWORD: admin
+
+
+networks:
+  sonarnet:
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:

@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "UniRoleta"
+
+version = "0.1.0"
+description = ""
+authors = ["Kaique de Queiroz Souza  <kaiqueluck2003@gmail.com>",
+           "Luis Felipe Martins Qualharello  <luizlipem1@gmail.com>",
+           "Matheus Silva Oliveira <oliveira.msilva22@gmail.com>",
+           "Murilo Silva Rego  <murilosrego@gmail.com>",
+           "Pedro Henrique Muller dos Santos  <pedromullerunimar@gmail.com>",
+           "Pedro José de Siqueira Valverde  <pedrojsiqueira@gmail.com>",
+           "Thiago Thailon da Silva  <thiagothailons@gmail.com>",
+           "Wladimir Belo  <atendimento.wladimir@gmail.com>"]
+
+readme = "README.md"
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "5"
+python-decouple = "^3.8"
+dj-database-url = "^2.1.0"
+psycopg2-binary = "^2.9.9"
+
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

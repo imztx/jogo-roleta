@@ -4,3 +4,5 @@
 **.egg*
 .coverage
 *.sqlite*
+coverage.xml
+.venv
