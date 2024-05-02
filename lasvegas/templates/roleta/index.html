@@ -10,7 +10,6 @@
 
   <title>Roletaço do Caio</title>
   <link rel="icon" href="{% static 'polls/roleta.png' %}" />
-  <script  src = "{% static 'polls/roleta.js' %}" ></script>
 </head>
 
 <body>
@@ -25,10 +24,11 @@
     <h1 id="texto_controle4">Casa:</h1>
     <h1 id="texto_controle5">Cor:</h1>
   </div>
-
+  <p class="saldo" >Saldo: {{ balance }}</p>
 
 
   <a href="{%url 'lasvegas:user_logout' %}">Sair</a>
+  <script  src = "{% static 'polls/roleta.js' %}" ></script>
 </body>
 
 

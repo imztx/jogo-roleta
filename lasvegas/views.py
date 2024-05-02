@@ -17,8 +17,11 @@ from django.urls import reverse
 
 @login_required
 def wallet_detail(request):
+    wallet = request.user.wallet
+    balance = wallet.get_balance()
     return render(request, 'wallet/detail.html', {
         'object': request.user.wallet,
+        'balance': balance,
     })
 
 class MovementListView(LoginRequiredMixin, ListView):
@@ -30,8 +33,9 @@ class MovementListView(LoginRequiredMixin, ListView):
             .filter(wallet__owner=self.request.user)
             
 def roleta(request):
-    template = loader.get_template("roleta/index.html")
-    return HttpResponse(template.render({}, request))
+    wallet = request.user.wallet
+    balance = wallet.get_balance()
+    return render(request, 'roleta/index.html', {'balance': balance})
 
 
 

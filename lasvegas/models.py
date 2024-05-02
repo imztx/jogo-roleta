@@ -16,6 +16,15 @@ class Wallet(models.Model):
     quantity = models.FloatField(
         default=0.,
     )
+    
+    def get_balance(self):
+        # Obtém todos os movimentos associados a esta carteira
+        movements = self.movement_set.all()
+        
+        # Calcula o saldo somando os valores dos movimentos
+        balance = sum(movement.value for movement in movements)
+        
+        return balance
 
 class Movement(models.Model):
 
