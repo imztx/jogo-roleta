@@ -11,24 +11,31 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   </head>
 
-  <body>
-    <h3>Bem-vindo a UniRoleta, clique no jogo da roleta e se divirta!!</h3>
+  <body class="body_tela">
+    
+
+    <div class="retangulo">
+      <h3 class="texto_retangulo">Bem-vindo a UniRoleta, clique no jogo da roleta e se divirta!!</h3>
+    </div>
+
+    <div class="tela_roleta">
+      <a href="http://127.0.0.1:8000/roleta">
+        <div>
+              <img src="{% static 'polls/roleta_inicial.png'%}" alt='Jogo da roleta' width="100%"/>
+        </div>
+        
+        <div>
+          <p>
+            Uniroleta do Caio
+          </p>
+        </div>
+      </a>
+    </div>
+    
 
   </body>
 </html>
 
-<div>
-  <a href="http://127.0.0.1:8000/roleta">
-    <div>
-          <img src="{% static 'polls/roleta_inicial.png'%}" alt='Jogo da roleta' width="30%" />
-    </div>
 
-     <div>
-           <p>
-                Uniroleta do Caio
-           </p>
-    </div>
-   </a>
-</div>
 
 

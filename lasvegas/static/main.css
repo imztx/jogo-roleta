@@ -1,6 +1,38 @@
-body {
-    background-color: black !important;
-    color: white !important;
-    text-align: center;
+.body_tela {
+    background-color: #424242;
+    color: white;
+    margin-left: 70px;
     margin-top: 20px;
+    margin: 0 auto;
+
+  }
+
+.tela_roleta {
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 2px;
+    max-width: 500px;
+    margin: 150px auto 0;
+    display: block;
+}
+
+.tela_roleta a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.retangulo {
+    width: 1495px;
+    height: 90px; 
+    background-color: #353535; 
+    padding: 20px; 
+}
+
+.retangulo p {
+    margin: 0; 
+}
+
+.texto_retangulo {
+    color: wheat;
+    margin-left: 290px;
 }
