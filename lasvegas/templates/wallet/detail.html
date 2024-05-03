@@ -4,6 +4,9 @@
 {{ object.quantity|localize}}
 
 
-<button message="Olá Mundo" class="btn btn-success">Olá Mundo</button>
-<button message="Olá Fim do Mundo" class="btn btn-danger">Olá Mundo</button>
+<h1>Detalhes da Carteira</h1>
+
+<p>Dono da Carteira: {{ object.owner.username }}</p>
+<p>Saldo: {{ balance }}</p>
+
 {% endblock %}
