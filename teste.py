@@ -82,3 +82,12 @@ class RoletaTest(TestCase):
                 bet = Bet.create_duo(100, input)
                 self.assertIsInstance(bet, Bet)
                 self.assertEqual(bet.numbers, expected)
+                
+    def test_line(self):
+        with self.assertRaises(Exception):
+            Bet.create_line(value=100, begin=4)
+        for i in range(1,4):
+            bet = Bet.create_line(value=100, begin=i)
+            self.assertEqual(bet.value, 100)
+            self.assertEqual(len(bet.numbers), 12)
+            self.assertEqual(bet.numbers, {i for i in range(i, 37, 3)})

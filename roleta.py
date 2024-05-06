@@ -82,7 +82,6 @@ class Bet:
     def create_quad(cls, value: float, begin: int):
         if begin % 3 != 0 and begin < 34:
             return cls(value,{ begin, begin + 1, begin +3, begin + 4 })
-        #raise Exception ('Aposta inválida')
     
     @classmethod
     def create_duo(cls, value: float, duo: str):
@@ -97,6 +96,11 @@ class Bet:
             return cls(value, {begin, end})
         raise Exception ('Aposta inválida')
     
+    @classmethod
+    def create_line(cls, value: float, begin: int):
+        if 0 < begin < 4:
+            return cls(value, {i for i in range(begin, 37, 3)})
+        raise Exception ('Aposta inválida')
 
 
 class Roleta:
