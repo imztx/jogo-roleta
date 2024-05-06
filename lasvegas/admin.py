@@ -11,3 +11,10 @@ class MovementAdmin(admin.ModelAdmin):
         'wallet',
     ]
 
+
+@admin.register(Wallet)
+class WalletAdmin(admin.ModelAdmin):
+    list_display = [
+        'owner',
+        'quantity',
+    ]

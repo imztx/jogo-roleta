@@ -25,6 +25,9 @@ class Wallet(models.Model):
         balance = sum(movement.value for movement in movements)
         
         return balance
+    
+    def __str__(self) -> str:
+        return str(self.owner)
 
 class Movement(models.Model):
 
@@ -51,7 +54,12 @@ class Movement(models.Model):
 def create_wallet(instance, created, raw, **kwargs):
     if raw or not created:
         return
-    Wallet.objects.create(owner=instance)
+    wallet = Wallet.objects.create(owner=instance)
+    Movement.objects.create(
+        wallet=wallet,
+        description='Bem vindo!',
+        value=1000.,
+    )
 
 
 @receiver(post_save, sender=Movement)
