@@ -31,7 +31,8 @@ class MovementListView(LoginRequiredMixin, ListView):
     def get_queryset(self) -> QuerySet[Any]:
         return super().get_queryset() \
             .filter(wallet__owner=self.request.user)
-            
+    
+@login_required(login_url="login")                        
 def roleta(request):
     wallet = request.user.wallet
     balance = wallet.get_balance()

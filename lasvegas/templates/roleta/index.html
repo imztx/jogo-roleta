@@ -26,8 +26,9 @@
   </div>
   <p class="saldo" >Saldo: {{ balance }}</p>
 
-
-  <a href="{%url 'lasvegas:user_logout' %}">Sair</a>
+  <span>
+    <a class="logout" href="{%url 'lasvegas:user_logout' %}">Sair</a>
+  </span>
   <script  src = "{% static 'polls/roleta.js' %}" ></script>
 </body>
 
