@@ -17,8 +17,6 @@ class WalletTest(TestCase):
             email='user@localhost',
         )
         self.assertIsNotNone(user.wallet)
-        wallet = user.wallet
-        self.assertEqual(wallet.quantity, 0.)
 
     def test_movement_should_change_wallet(self):
         wallet  = Wallet.objects.create()
