@@ -21,3 +21,10 @@ def create_user():
         email=f'user{USER_COUNTER}@localhost',
     )
 
+
+
+def create_user_without_movements():
+    user = create_user()
+    user.wallet.movement_set.all().delete()
+    return user
+

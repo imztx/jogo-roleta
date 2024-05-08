@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 from http import HTTPStatus
 from lasvegas.models import Wallet, Movement
 from django.shortcuts import resolve_url
-from lasvegas.tests import create_user
+from lasvegas.tests import create_user_without_movements
 
 # Create your tests here.
 
@@ -22,7 +22,7 @@ class AnonymousWMovementViewsTest(TestCase):
 class AuthMovementViewsTest(TestCase):
 
     def test_my_movement_should_be_empty(self):
-        login_user = create_user()
+        login_user = create_user_without_movements()
         self.client.force_login(login_user)
         url = resolve_url('lasvegas:my-movement-list')
         response = self.client.get(url)
@@ -30,7 +30,7 @@ class AuthMovementViewsTest(TestCase):
         self.assertEqual(list(response.context['object_list']), [])
 
     def test_my_movement_should_retrieve_my_data(self):
-        login_user = create_user()
+        login_user = create_user_without_movements()
         self.client.force_login(login_user)
         url = resolve_url('lasvegas:my-movement-list')
         m1 = Movement.objects.create(
@@ -48,8 +48,8 @@ class AuthMovementViewsTest(TestCase):
         self.assertEqual(list(response.context['object_list']), [m1, m2])
 
     def test_my_movement_should_not_retrieve_other_data(self):
-        login_user = create_user()
-        other_user = create_user()
+        login_user = create_user_without_movements()
+        other_user = create_user_without_movements()
         self.client.force_login(login_user)
         url = resolve_url('lasvegas:my-movement-list')
         m1 = Movement.objects.create(
