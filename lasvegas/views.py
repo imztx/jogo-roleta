@@ -93,3 +93,11 @@ def cadastro(request):
 def tela_ini(request):
     template = loader.get_template("tela_inicial/tela.html")
     return HttpResponse(template.render({}, request))
+
+def rules(request):
+    template = loader.get_template("regras/rules.html")
+    return HttpResponse(template.render({}, request))
+
+def about(request):
+    template = loader.get_template("regras/rules.html")
+    return HttpResponse(template.render({}, request))
