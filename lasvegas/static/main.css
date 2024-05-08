@@ -77,11 +77,14 @@
     margin-left: 50px;
     padding: 5px;
     
-    
-
 }
 
 .text_jogo { 
     text-align: center;
     margin-top: 50px;
+}
+
+
+.ola {
+    color: black;
 }
