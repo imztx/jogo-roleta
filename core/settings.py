@@ -145,3 +145,5 @@ AUTH_USER_MODEL = config(
     'AUTH_USER_MODEL',
     default='auth.User', 
 )
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"

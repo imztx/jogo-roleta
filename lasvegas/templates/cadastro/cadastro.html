@@ -65,5 +65,13 @@
     </div>    
   </div>
 
+  {% if messages %}
+  {% for message in messages %}
+      <p>
+              {{ message }}
+      </p>
+  {% endfor %}
+{% endif %}  
+
 </body>
 </html>

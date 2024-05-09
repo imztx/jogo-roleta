@@ -13,6 +13,7 @@ from core.forms import CreateUserForm, LoginForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.contrib import messages
 # Create your views here.
 
 @login_required
@@ -56,8 +57,15 @@ def user_login(request):
     
             if user is not None:
                 auth.login(request, user)
+                messages.success(request, 'Logado com sucesso. Bem- Vindo!!')
                 
                 return redirect("lasvegas:roleta")
+            
+            else:
+                messages.error(request, 'Usuario ou senha inválido')
+
+        else:
+                messages.error(request, 'Usuario ou senha inválido')        
         
     context = {'loginform':form}    
     
@@ -81,6 +89,7 @@ def cadastro(request):
         
         if form.is_valid():
             form.save()
+            messages.success(request, 'Cadastrado com sucesso.')
             
             return redirect("lasvegas:login")
         
@@ -99,5 +108,5 @@ def rules(request):
     return HttpResponse(template.render({}, request))
 
 def about(request):
-    template = loader.get_template("regras/rules.html")
+    template = loader.get_template("about/about.html")
     return HttpResponse(template.render({}, request))
