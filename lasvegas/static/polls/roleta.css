@@ -6,6 +6,42 @@ body {
     background-color: rgb(14, 108, 14);
 }
 
+
+.caixa {
+    position: fixed; /* Define a posição fixa */
+    top: 40%; /* Ajusta a posição verticalmente */
+    left: 50%; /* Ajusta a posição horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza a caixa */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999; 
+    color: green;
+    text-align: center;
+    font-size: 24px;
+  }
+
+.caixa h2 {
+  margin-bottom: 10px;
+}
+.caixa p {
+  margin-bottom: 20px;
+}
+.caixa button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.caixa button:hover {
+  background-color: #0056b3;
+}
+
 .caixa_mesa {
     position: relative;
     min-height: 345px;

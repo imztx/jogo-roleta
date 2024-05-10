@@ -62,10 +62,10 @@ def user_login(request):
                 return redirect("lasvegas:roleta")
             
             else:
-                messages.error(request, 'Usuario ou senha inválido')
+                messages.error(request, 'Usuário ou senha inválido.')
 
         else:
-                messages.error(request, 'Usuario ou senha inválido')        
+                messages.error(request, 'Usuário ou senha inválido.')        
         
     context = {'loginform':form}    
     
@@ -89,7 +89,7 @@ def cadastro(request):
         
         if form.is_valid():
             form.save()
-            messages.success(request, 'Cadastrado com sucesso.')
+            messages.success(request, 'Cadastro bem-sucedido.')
             
             return redirect("lasvegas:login")
         

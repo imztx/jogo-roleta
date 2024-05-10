@@ -21,9 +21,37 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
   </style>
 </head>
 <body>
+
+    <div class="toast-container">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+          <div class="toast-header">
+          </div>
+          <div class="toast-body">
+            {% if messages %}
+              {% for message in messages %}
+                <p>
+                  <strong>{{ message }}</strong>
+                </p>
+              {% endfor %}
+           {% endif %}
+          </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        // Seleciona o toast
+        var toastEl = document.querySelector('.toast');
+        // Cria uma instância de Toast do Bootstrap
+        var toast = new bootstrap.Toast(toastEl);
+        // Exibe o toast
+        toast.show();
+      });
+    </script>
 
   <div class="container">
     <div class="form">
@@ -64,14 +92,6 @@
         </form>
     </div>    
   </div>
-
-  {% if messages %}
-  {% for message in messages %}
-      <p>
-              {{ message }}
-      </p>
-  {% endfor %}
-{% endif %}  
 
 </body>
 </html>
