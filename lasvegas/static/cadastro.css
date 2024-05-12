@@ -4,7 +4,7 @@
     max-width: 300px;
     margin: 65px auto;
     padding: 30px;
-    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    font-family: "Poetsen One", sans-serif;
   }  
   
 
@@ -12,7 +12,6 @@ body {
     background: #76b852;
     background: rgb(141,194,111);
     background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
-    font-family: Arial, Helvetica, sans-serif, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;      
   }    

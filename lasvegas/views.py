@@ -57,7 +57,6 @@ def user_login(request):
     
             if user is not None:
                 auth.login(request, user)
-                messages.success(request, 'Logado com sucesso. Bem- Vindo!!')
                 
                 return redirect("lasvegas:roleta")
             
