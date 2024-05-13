@@ -1,0 +1,84 @@
+.body_tela {
+    background-image: url("polls/fundo_cassino.png");
+    background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      color: black;
+      width: 100%;
+      height: 100vh;
+      font-family: "Poetsen One", sans-serif;
+    }
+  
+  .tela_roleta {
+      text-align: center;
+      border: 5px solid black;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 80px auto 0;
+      display: block;
+      background-color: #191919;
+  }
+  
+  .tela_roleta a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 25px;
+  }
+  .retangulo {
+      width: auto;
+      height: auto; 
+      background-color: #111111; 
+      padding: 20px; 
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .retangulo p {
+      margin: 0; 
+  }
+  
+  .texto_retangulo {
+      color: wheat;
+      margin-left: 60px;
+      margin-top: 15px;
+  }
+  
+  .info {
+      background-color: #111111;
+      overflow: hidden;
+      margin-top: 15px;
+      margin-right: 80px;
+    }
+    
+    .info a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .info a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  
+    .info a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+  
+  .logoo {
+      width: 90px;
+      height: 80px;
+      overflow: hidden;
+      margin-left: 50px;
+      padding: 5px;
+      
+  }
+  
+  .text_jogo { 
+      text-align: center;
+      margin-top: 50px;
+  }
