@@ -1,6 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from lasvegas.models import Movement
+from lasvegas.models import Movement, Wallet
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
@@ -36,8 +36,9 @@ class MovementListView(LoginRequiredMixin, ListView):
 @login_required(login_url="login")                        
 def roleta(request):
     wallet = request.user.wallet
+    username = request.user.username
     balance = wallet.get_balance()
-    return render(request, 'roleta/index.html', {'balance': balance})
+    return render(request, 'roleta/index.html', {'balance': balance, 'username': username})
 
 
 

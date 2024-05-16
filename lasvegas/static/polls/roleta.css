@@ -9,6 +9,10 @@ html, body{
 	user-select: none;
 }
 
+header {
+	margin-bottom: 100px;
+}
+
 body{
     background: #016D29;
 }
@@ -871,11 +875,11 @@ body{
     border: 2px solid gold;
     color: white;
     background: #000;
-    margin-left: 1200px;
-    margin-top: 50px;
-    padding: 3px;
     position: absolute;
-    top: 5px;
+    margin-left: 1300px;
+    margin-top: 10px;
+    padding: 3px;
+    top: 10px;
     text-decoration: none;
 }
 
