@@ -1,10 +1,36 @@
+
+
+const data = document.currentScript.dataset;
+var balance = parseFloat(data.balance);
+
 let bankValue = 1000;
+
+function add_credit(){
+	if (balance > 100){
+		balance = balance - 100
+		document.getElementById("saldo_user").innerHTML = "<i class='fas fa-coins'></i>&nbsp;Saldo: " + balance + ",0";
+		bankValue += 100
+		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
+		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+	}
+	// else {
+	document.getElementsByClassName("aviso_sem_saldo").innerHTML = "Saldo insuficiente";
+	document.querySelector("aviso_sem_saldo").style.transform = 'rotate(15deg);';
+	// }
+}
+
+const casa = {
+    0: '0', 1: '32', 2: '15', 3: '19', 4: '4', 5: '21', 6: '2', 7: '25', 8: '17', 9: '34', 10: '6', 11: '27', 12: '13', 13: '36', 14: '11', 15: '30', 16: '8', 17: '23', 18: '10', 19: '5', 20: '24', 21: '16', 22: '33', 23: '1', 24: '20', 25: '14', 26: '31', 27: '9', 28: '22', 29: '18', 30: '29', 31: '7', 32: '28', 33: '12', 34: '35', 35: '3', 36: '26', 37: '0'
+}
+
+
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
 let bet = [];
 let numbersBet = [];
 let previousNumbers = [];
+let winningSpin = 0;
 
 let numRed = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
 let wheelnumbersAC = [0, 26, 3, 35, 12, 28, 7, 29, 18, 22, 9, 31, 14, 20, 1, 33, 16, 24, 5, 10, 23, 8, 30, 11, 36, 13, 27, 6, 34, 17, 25, 2, 21, 4, 19, 15, 32];
@@ -19,7 +45,7 @@ let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	bankValue = 1000;
+	bankValue = 0;
 	currentBet = 0;
 	wager = 5;
 	bet = [];
@@ -31,7 +57,7 @@ function resetGame(){
 }
 
 function startGame(){
-	buildWheel();
+	// buildWheel();
 	buildBettingBoard();
 }
 
@@ -497,8 +523,7 @@ function setBet(e, n, t, o){
 }
 
 function spin(){
-	var winningSpin = Math.floor(Math.random() * 37);
-	spinWheel(winningSpin);
+	rodar_roleta();
 	setTimeout(function(){
 		if(numbersBet.includes(winningSpin)){
 			let winValue = 0;
@@ -606,32 +631,53 @@ function removeBet(e, n, t, o){
 	}
 }
 
-function spinWheel(winningSpin){
-	for(i = 0; i < wheelnumbersAC.length; i++){
-		if(wheelnumbersAC[i] == winningSpin){
-			var degree = (i * 9.73) + 362;
-		}
-	}
-	wheel.style.cssText = 'animation: wheelRotate 5s linear infinite;';
-	ballTrack.style.cssText = 'animation: ballRotate 1s linear infinite;';
 
-	setTimeout(function(){
-		ballTrack.style.cssText = 'animation: ballRotate 2s linear infinite;';
-		style = document.createElement('style');
-		style.type = 'text/css';
-		style.innerText = '@keyframes ballStop {from {transform: rotate(0deg);}to{transform: rotate(-'+degree+'deg);}}';
-		document.head.appendChild(style);
-	}, 2000);
-	setTimeout(function(){
-		ballTrack.style.cssText = 'animation: ballStop 3s linear;';
-	}, 6000);
-	setTimeout(function(){
-		ballTrack.style.cssText = 'transform: rotate(-'+degree+'deg);';
-	}, 9000);
-	setTimeout(function(){
-		wheel.style.cssText = '';
-		style.remove();
-	}, 10000);
+
+var current_roulette_rotation = 0;
+var current_ball_rotation = 0;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
+async function rodar_roleta() {
+    
+    document.getElementById("roleta").style.transitionDuration = '8s';
+    document.getElementById("bola").style.transitionDuration = '9s';
+    
+    current_roulette_rotation += 1080 + (Math.floor(Math.random()*37))*(360/37);
+    current_ball_rotation += 4320 + (Math.floor(Math.random()*37))*(360/37);
+
+    document.querySelector("#roleta").style.transform = 'rotate(' + current_roulette_rotation + 'deg)';
+    document.querySelector("#bola").style.transform = 'rotate(' + current_ball_rotation + 'deg)';
+
+    if (current_ball_rotation%360 < current_roulette_rotation%360) {
+        var diff = current_ball_rotation%360 - current_roulette_rotation%360 + 360
+    } else {
+        var diff = current_ball_rotation%360 - current_roulette_rotation%360
+    }
+
+
+    if (Math.round(diff/(360/37)) == 0 || Math.round(diff/(360/37)) == 37) {
+        var cor = 'Verde'
+    } else if (Math.round(diff/(360/37))%2 == 1) {
+        var cor = 'Vermelho'
+    } else {
+        var cor = 'Preto'
+    }
+
+    await sleep(8000);
+  
+    
+    document.getElementById("roleta").style.transitionDuration = '0s';
+    document.getElementById("bola").style.transitionDuration = '0s';
+	
+	let casa_certa = parseInt(casa[Math.round(diff/(360/37))]);
+
+	winningSpin = casa_certa;
+
 }
 
 function removeChips(){

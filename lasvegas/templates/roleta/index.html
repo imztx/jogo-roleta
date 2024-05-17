@@ -2,18 +2,19 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniRoleta</title>
-    <link rel="icon" href="{% static 'polls/roleta.png' %}" />
-    <link rel="stylesheet" href="{% static 'polls/roleta.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e5eab90658.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UniRoleta</title>
+        <link rel="icon" href="{% static 'polls/roleta.png' %}" />
+        <link rel="stylesheet" href="{% static 'polls/roleta.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/e5eab90658.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+        <script src="{% static 'polls/roleta.js' %}" defer data-balance="{{ balance }}"></script>
 </head>
 <header>
 
@@ -25,8 +26,14 @@
         <button onclick="fecharMensagem()">Começar</button>
     </div>
 
+    <div class="caixa_roleta">
+        <img src="{% static 'polls/roleta.png' %}" alt="" class="roleta" id="roleta">
+        <img src="{% static 'polls/bola.png' %}" alt="" class="bola" id="bola">
+    </div>
+
+
     <div class="container mt-5">
-        <p class="saldo"><i class="fas fa-coins"></i>&nbsp;Saldo: {{ balance }}</p>
+        <p class="saldo" id="saldo_user"><i class="fas fa-coins"></i>&nbsp;Saldo: {{ balance }}</p>
 
         <span>
             <a class="logout" href="{% url 'lasvegas:user_logout' %}">Sair</a>
@@ -34,13 +41,17 @@
     </div>
 
 
-    <script src="{% static 'polls/roleta.js' %}"></script>
     <script type="text/javascript">
         function fecharMensagem() {
             var caixa = document.querySelector('.caixa');
             caixa.style.display = 'none';
         }
     </script>
+    
+    <p class="aviso_sem_saldo" id="aviso_sem_saldo">placeholder</p>
+    <button id="botaoteste" class="adicionarpontos" onclick="add_credit()">Adicionar mais 100</button>
+    
+
 </body>
 
 </html>
