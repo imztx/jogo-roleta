@@ -275,7 +275,7 @@ function buildBettingBoard(){
 
 	let bbtop = document.createElement('div');
 	bbtop.setAttribute('class', 'bbtop');
-	let bbtopBlocks = ['1 to 18', '19 to 36'];
+	let bbtopBlocks = ['1 a 18', '19 a 36'];
 	for(i = 0; i < bbtopBlocks.length; i++){
 		let f = i;
 		var bbtoptwo = document.createElement('div');
@@ -314,11 +314,11 @@ function buildBettingBoard(){
 	zero.append(nbnz);
 	numberBoard.append(zero);
 	
-	var numberBlocks = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, '2 to 1', 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, '2 to 1', 1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34, '2 to 1'];
+	var numberBlocks = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, '2 : 1', 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, '2 : 1', 1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34, '2 : 1'];
 	var redBlocks = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
 	for(i = 0; i < numberBlocks.length; i++){
 		let a = i;
-		var nbClass = (numberBlocks[i] == '2 to 1')? 'tt1_block' : 'number_block';
+		var nbClass = (numberBlocks[i] == '2 : 1')? 'tt1_block' : 'number_block';
 		var colourClass = (redBlocks.includes(numberBlocks[i]))? ' redNum' : ((nbClass == 'number_block')? ' blackNum' : '');
 		var numberBlock = document.createElement('div');
 		numberBlock.setAttribute('class', nbClass + colourClass);
@@ -332,7 +332,7 @@ function buildBettingBoard(){
 		};
 		numberBlock.oncontextmenu = function(e){
 			e.preventDefault();
-			if(numberBlocks[a] != '2 to 1'){
+			if(numberBlocks[a] != '2 : 1'){
 				removeBet(this, ''+numberBlocks[a]+'', 'inside_whole', 35);
 			}else{
 				num = (a == 12)? '3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36' : ((a == 25)? '2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35' : '1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34');
@@ -349,7 +349,7 @@ function buildBettingBoard(){
 
 	let bo3Board = document.createElement('div');
 	bo3Board.setAttribute('class', 'bo3_board');	
-	let bo3Blocks = ['1 to 12', '13 to 24', '25 to 36'];
+	let bo3Blocks = ['1 a 12', '13 a 24', '25 a 36'];
 	for(i = 0; i < bo3Blocks.length; i++){
 		let b = i;
 		var bo3Block = document.createElement('div');
@@ -392,7 +392,7 @@ function buildBettingBoard(){
 
 	let chipDeck = document.createElement('div');
 	chipDeck.setAttribute('class', 'chipDeck');
-	let chipValues = [1, 5, 10, 100, 'clear'];
+	let chipValues = [1, 5, 10, 100, 'zerar'];
 	for(i = 0; i < chipValues.length; i++){
 		let cvi = i;
 		let chipColour = (i == 0)? 'red' : ((i == 1)? 'blue cdChipActive' : ((i == 2)? 'orange' : ((i == 3)? 'gold' : 'clearBet')));
@@ -463,7 +463,7 @@ function buildBettingBoard(){
 function clearBet(){
 	bet = [];
 	numbersBet = [];
-}
+}		
 
 function setBet(e, n, t, o){
 	lastWager = wager;
@@ -472,7 +472,7 @@ function setBet(e, n, t, o){
 		if(!container.querySelector('.spinBtn')){
 			let spinBtn = document.createElement('div');
 			spinBtn.setAttribute('class', 'spinBtn');
-			spinBtn.innerText = 'spin';
+			spinBtn.innerText = 'girar';
 			spinBtn.onclick = function(){
 				this.remove();
 				spin();
@@ -493,6 +493,7 @@ function setBet(e, n, t, o){
 				chipSpan.innerText = bet[i].amt;
 				return;
 			}
+			
 		}
 		var obj = {
 			amt: wager,
