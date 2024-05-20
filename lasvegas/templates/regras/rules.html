@@ -1,203 +1,256 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="{{ request.LANGUAGE_CODE }}">
-    <head>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-      <script async="async" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <link href="{% static 'rules.css' %}" rel="stylesheet" />
-      <script src="{% static 'main.js' %}" type="text/javascript"></script>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script async="async" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="{% static 'rules.css' %}" rel="stylesheet" />
+    <script src="{% static 'main.js' %}" type="text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet" />
+  </head>
 
-
-
-    </head>
-    
-    
-<body>
+  <body>
     <div class="retangulo">
-        <img class="logoo" src="{% static 'polls/logo.png'%}" alt="" />
-        <h3 class="texto_retangulo">Bem-vindo as Regras da UniRoleta, leia com atenção!!</h3>
-  
-        <div class="info">
-            <a href="{% url 'lasvegas:tela_inicial' %}">Tela Inicial</a>
-            <a href="{% url 'lasvegas:about' %}">Sobre</a>
-        </div>
+      <img class="logoo" src="{% static 'polls/logo.png' %}" alt="" />
+      <h3 class="texto_retangulo">Bem-vindo as Regras da UniRoleta, leia com atenção!!</h3>
+
+      <div class="info">
+        <a href="{% url 'lasvegas:tela_inicial' %}">Tela Inicial</a>
+        <a href="{% url 'lasvegas:about' %}">Sobre</a>
       </div>
-    </html>
-    <h2 class="regras_roleta">Regras da Roleta</h2>
-    <p>A Roleta tem sido jogada de uma forma ou de outra por séculos. A icônica roleta foi concebida contendo somente 31 números, embora agora geralmente tenha ou 37 (na Europa) ou 38 (nos Estados Unidos), o que significa que as chances de sucesso variam ligeiramente dependendo de qual variante você está jogando. A evolução do jogo a viu se tornar um símbolo dos cassinos modernos em todo o mundo.</p>
-  <h2>Visão Geral</h2>
-  <p>A roleta na European Roulette contém 37 posições, numeradas de zero a 36. Isso significa que os jogadores são ofertados com melhores probabilidades do que em outras mesas de roleta, como a Americana, que tem mais posições.</p>
-<p>As duas principais seções da mesa nas quais as apostas são feitas são a 'seção interna' e a 'seção externa'. Cada uma com diversas formas diferentes para apostar.</p>
-<p>A seção interna oferece apostas em números individuais que estão próximos um do outro no layout da mesa, ou grupos de até seis números.</p>
-<p>A seção externa contém pares de apostas para vermelho ou preto, alto ou baixo e par ou ímpar (cada uma cobrindo 18 números). Você também pode fazer seis diferentes apostas de 12 números (três de cada,  conhecidas como apostas de 'Coluna' e 'Dúzia').</p>
-<p>Além disso, existem grupos de apostas que abrangem de sete a 17 números, localizadas em diferentes segmentos da roleta. Estas apostas podem ser feitas com um simples clique na "racetrack", a parte do layout da mesa de roleta que representa a roleta verdadeira e a ordem na qual os números são mostrados, em vez da ordem numérica do layout de apostas principal.</p></div>
-<h3 id="" class="jogo_regras">O Jogo e as Regras do Jogo</h3>
-<div class="texto_jogo_regras"><p>Uma vez que entrar na mesa, cada jogador é solicitado a selecionar uma cor de ficha para utilizar durante a sessão. Você pode então selecionar facilmente o valor das fichas ao fazer as apostas, e variar o número colocado de uma vez em uma determinada área de aposta.</p>
-<p>Acompanhamos automaticamente os valores apostados, e não permitirá que apostas abaixo do limite mínimo da mesa sejam feitas. Se o valor nominal escolhido for menor do que o mínimo permitido, o seu primeiro clique na área de apostas colocará a aposta mínima da mesa.</p>
-<p>Utilizando apostas internas ou externas, você pode apostar em qualquer número, ou combinação de números. Lembre-se que cada aposta externa deve ser de pelo menos o valor do mínimo da mesa; a mesma regra se aplica ao total apostado nas apostas internas. Lembre-se também que cada uma é independente da outra em relação ao mínimo da mesa.</p>
-<p>Para as apostas ganhadoras, a aposta original é retornada para a sua conta, mais o pagamento que você recebe baseado no valor investido e as informações das probabilidades (relacionada abaixo). As apostas perdedoras serão perdidas.</p>
-<p>O software reconhece automaticamente que as apostas internas são acumulativas, assim as apostas podem ser feitas na seção interna da mesa até que o mínimo seja atingido. Caso ele não seja atingido, as apostas abaixo do mínimo serão removidas quando a roleta for girada (depois que o cronômetro de apostas encerrar).</p>
-<p>Ao jogar em uma mesa de Jogadores Múltiplos, todas as apostas serão elegíveis a ganhar ou perder uma vez que o cronômetro de apostas encerrar. Nas mesas de Jogador Único, as apostas não serão consideradas ativas até que a ação seja confirmada e o botão <strong>Girar</strong> tenha sido clicado.</p></div>
-<div class="formato_texto"><table border="0" cellpadding="0">
-<tbody>
-<tr align="center"><th colspan="3" align="center"><strong>Pagamentos das Apostas Internas – Roleta</strong></th></tr>
-<tr><th><strong>Nome da Aposta</strong></th><th><strong>Números Cobertos</strong></th><th><strong>Probabilidades de Pagamento</strong></th></tr>
-<tr>
-<td>Pleno</td>
-<td>1</td>
-<td>35 para 1</td>
-</tr>
-<tr>
-<td>Dividir</td>
-<td>2</td>
-<td>17 para 1</td>
-</tr>
-<tr>
-<td>Linha</td>
-<td>3</td>
-<td>11 para 1</td>
-</tr>
-<tr>
-<td>Quadrado</td>
-<td>4</td>
-<td>8 para 1</td>
-</tr>
-<tr>
-<td>Linha Dupla</td>
-<td>6</td>
-<td>5 para 1</td>
-</tr>
-</tbody>
-</table></div><div class="estru_pagamento"><table border="0" cellpadding="0">
-<tbody>
-<tr><th colspan="3"><strong>Pagamentos das Apostas Externas – Roleta</strong></th></tr>
-<tr><th><strong>Nome da Aposta</strong></th><th><strong>Números Cobertos</strong></th><th><strong>Probabilidades de Pagamento</strong></th></tr>
-<tr>
-<td>Vermelho</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>Preto</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>Ímpar</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>Par</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>Baixo (1-18)</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>Alto (19-36)</td>
-<td>18</td>
-<td>1 para 1</td>
-</tr>
-<tr>
-<td>1ª, 2ª ou 3ª dúzia</td>
-<td>12</td>
-<td>2 para 1</td>
-</tr>
-<tr>
-<td>1ª, 2ª ou 3ª coluna</td>
-<td>12</td>
-<td>2 para 1</td>
-</tr>
-</tbody>
-</table></div><h2 id="" class="aposta_dividida">Apostas Divididas e Racetrack</h2>
-<div class="texo_aposta_divi"><p>Além das seções Interna e Externa, as apostas também podem ser feitas na área 'racetrack' da mesa. Esta seção do layout da mesa de roleta representa a ordem real que os números aparecem na própria roleta. Clique em um dos números para colocar fichas nele, mais os dois números adjacentes (conhecidos como 'vizinhos') dos dois lados deste número.</p>
-<p>A 'racetrack' pode ser utilizada para fazer outras quatro apostas especiais, cada qual coloca automaticamente várias fichas no layout, como mostrado na tabela a seguir.</p></div>
-<div class="estruc_aposta_divi"><table border="0" cellpadding="0">
-<tbody>
-<tr><th><strong>Nome da Aposta</strong></th><th><strong>Custo da Ficha</strong></th><th><strong>Números Cobertos</strong></th><th><strong>Distribuição</strong></th></tr>
-<tr>
-<td>Vizinhos do Zero</td>
-<td>Nove fichas</td>
-<td>17</td>
-<td>0/2/3 (duas fichas), 4/7, 12/15, 18/21, 19/22, 25/26/28/29 (duas fichas), 32/35</td>
-</tr>
-<tr>
-<td>Terço da Roleta</td>
-<td>Seis fichas</td>
-<td>12</td>
-<td>5/8, 10/11, 13/16, 23/24, 27/30, 33/36</td>
-</tr>
-<tr>
-<td>Orphelins en Plein</td>
-<td>Oito fichas</td>
-<td>8</td>
-<td>1, 6, 9, 14, 17, 20, 31, 34</td>
-</tr>
-<tr>
-<td>Zero</td>
-<td>Quatro fichas</td>
-<td>7</td>
-<td>0/3, 12/15, 26, 32/35</td>
-</tr>
-</tbody>
-</table></div><div class="aposta_2"><p>Apostas em dois números adjacentes (divididos) da mesma cor no layout principal (ex. vermelho ou preto) podem ser apostadas em uma ação utilizando os controles para apostas divididas encontrados perto da área 'racetrack' da mesa.</p></div>
-<div class="texto_aposta2"><table border="0" cellpadding="0">
-<tbody>
-<tr><th><strong>Divididos Vermelhos (quatro apostas)</strong></th><th><strong>Divididos Pretos (sete apostas)</strong></th></tr>
-<tr>
-<td>9/12</td>
-<td>8/11</td>
-</tr>
-<tr>
-<td>16/19</td>
-<td>10/11</td>
-</tr>
-<tr>
-<td>18/21</td>
-<td>10/13</td>
-</tr>
-<tr>
-<td>27/30</td>
-<td>17/20</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>26/29</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>28/29</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>28/31</td>
-</tr>
-</tbody>
-</table>
-</div>
+    </div>
+    <div class="regras_roleta">
+      <h2 class="texto_regras">Regras da Roleta</h2>
+      <p>A Roleta tem sido jogada de uma forma ou de outra por séculos. A icônica roleta foi concebida contendo somente 31 números, embora agora geralmente tenha ou 37 (na Europa) ou 38 (nos Estados Unidos), o que significa que as chances de sucesso variam ligeiramente dependendo de qual variante você está jogando. A evolução do jogo a viu se tornar um símbolo dos cassinos modernos em todo o mundo.</p>
 
-<h2 id="" class="limite_aposta">Limites de Apostas</h2>
-<div class="texto_limite"><p>Seguindo uma convenção semelhante à maioria dos cassinos modernos em todo o mundo, os limites de apostas nas mesas de roleta variam, dependendo  se elas cobrem as apostas internas ou externas.</p>
-<p>A aposta externa máxima exibida em cada mesa indica o maior valor que pode ser colocado em cada (ou todas) as posições de apostas externas. Não existe um máximo acumulativo.</p>
-<p>A aposta interna máxima de uma mesa se refere ao valor permitido para ser colocado em cada aposta de número individual (ou direta).</p>
-<p>Todos os outros tipos de apostas internas (por exemplo a dividida, linha dupla, linha, etc.) têm o seu próprio valor máximo de aposta, relativo ao máximo do direto da mesa. A regra geral é que quanto mais números forem cobertos por uma aposta, maiores serão os limites. Por exemplo, uma aposta Pleno cobre um número e a aposta máxima pode ser de 25 fichas. Uma aposta Dividida cobre dois números e assim o dobro do máximo é permitido (50 fichas). Uma aposta de Linha cobre três números e neste exemplo a aposta máxima seria de 75 fichas, e assim por diante.</p>
-<p>Em uma mesa com um limite de aposta máxima no pleno de 25 fichas, é possível fazer até 40 apostas de 25 fichas em torno de um número posicionado na coluna do meio do layout, como o 17 (apostas em um pleno (1), quatro divididos (8), uma linha (3), quatro quadrados (16), e duas linhas duplas (12), para um total de 1.000 fichas.</p></div>
+      <h2>Visão Geral</h2>
+      <p>A roleta na European Roulette contém 37 posições, numeradas de zero a 36. Isso significa que os jogadores são ofertados com melhores probabilidades do que em outras mesas de roleta, como a Americana, que tem mais posições.</p>
+      <p>As duas principais seções da mesa nas quais as apostas são feitas são a 'seção interna' e a 'seção externa'. Cada uma com diversas formas diferentes para apostar.</p>
+      <p>A seção interna oferece apostas em números individuais que estão próximos um do outro no layout da mesa, ou grupos de até seis números.</p>
+      <p>A seção externa contém pares de apostas para vermelho ou preto, alto ou baixo e par ou ímpar (cada uma cobrindo 18 números). Você também pode fazer seis diferentes apostas de 12 números (três de cada, conhecidas como apostas de 'Coluna' e 'Dúzia').</p>
+      <p>Além disso, existem grupos de apostas que abrangem de sete a 17 números, localizadas em diferentes segmentos da roleta. Estas apostas podem ser feitas com um simples clique na "racetrack", a parte do layout da mesa de roleta que representa a roleta verdadeira e a ordem na qual os números são mostrados, em vez da ordem numérica do layout de apostas principal.</p>
 
-<h2 id="" class="retorno_jogador">O Retorno Teórico para o Jogador (RTP)</h2>
+      <h3 class="jogo_regras">O Jogo e as Regras do Jogo</h3>
+      <p>Uma vez que entrar na mesa, cada jogador é solicitado a selecionar uma cor de ficha para utilizar durante a sessão. Você pode então selecionar facilmente o valor das fichas ao fazer as apostas, e variar o número colocado de uma vez em uma determinada área de aposta.</p>
+      <p>Acompanhamos automaticamente os valores apostados, e não permitirá que apostas abaixo do limite mínimo da mesa sejam feitas. Se o valor nominal escolhido for menor do que o mínimo permitido, o seu primeiro clique na área de apostas colocará a aposta mínima da mesa.</p>
+      <p>Utilizando apostas internas ou externas, você pode apostar em qualquer número, ou combinação de números. Lembre-se que cada aposta externa deve ser de pelo menos o valor do mínimo da mesa; a mesma regra se aplica ao total apostado nas apostas internas. Lembre-se também que cada uma é independente da outra em relação ao mínimo da mesa.</p>
+      <p>Para as apostas ganhadoras, a aposta original é retornada para a sua conta, mais o pagamento que você recebe baseado no valor investido e as informações das probabilidades (relacionada abaixo). As apostas perdedoras serão perdidas.</p>
+      <p>O software reconhece automaticamente que as apostas internas são acumulativas, assim as apostas podem ser feitas na seção interna da mesa até que o mínimo seja atingido. Caso ele não seja atingido, as apostas abaixo do mínimo serão removidas quando a roleta for girada (depois que o cronômetro de apostas encerrar).</p>
+      <p>
+        Ao jogar em uma mesa de Jogadores Múltiplos, todas as apostas serão elegíveis a ganhar ou perder uma vez que o cronômetro de apostas encerrar. Nas mesas de Jogador Único, as apostas não serão consideradas ativas até que a ação seja confirmada e o botão <strong>Girar</strong> tenha sido clicado.
+      </p>
 
-<div class="texto_retorno"><p>O retorno teórico do jogador (RTP) para a Roleta, European Roulette e High Roller Roulette é 97,3%</p>
-<p>O RTP teórico para a American Roulette é de 94,74%. O RTP teórico da aposta Five Line na American Roulette é de 92,11%.</p>
-</div>
-</body>
+      <strong>Pagamentos das Apostas Internas – Roleta</strong>
+      <table border="0" cellpadding="0">
+        <tr>
+          <th>Nome da Aposta</th>
+          <th>Números Cobertos</th>
+          <th>Probabilidades de Pagamento</th>
+        </tr>
+        <tr>
+          <td>Pleno</td>
+          <td>1</td>
+          <td>35 para 1</td>
+        </tr>
+        <tr>
+          <td>Dividir</td>
+          <td>2</td>
+          <td>17 para 1</td>
+        </tr>
+        <tr>
+          <td>Linha</td>
+          <td>3</td>
+          <td>11 para 1</td>
+        </tr>
+        <tr>
+          <td>Quadrado</td>
+          <td>4</td>
+          <td>8 para 1</td>
+        </tr>
+        <tr>
+          <td>Linha Dupla</td>
+          <td>6</td>
+          <td>5 para 1</td>
+        </tr>
+        <div class="estru_pagamento">
+          <table border="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <th colspan="3">
+                  <strong>Pagamentos das Apostas Externas – Roleta</strong>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <strong>Nome da Aposta</strong>
+                </th>
+                <th>
+                  <strong>Números Cobertos</strong>
+                </th>
+                <th>
+                  <strong>Probabilidades de Pagamento</strong>
+                </th>
+              </tr>
+              <tr>
+                <td>Vermelho</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>Preto</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>Ímpar</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>Par</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>Baixo (1-18)</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>Alto (19-36)</td>
+                <td>18</td>
+                <td>1 para 1</td>
+              </tr>
+              <tr>
+                <td>1ª, 2ª ou 3ª dúzia</td>
+                <td>12</td>
+                <td>2 para 1</td>
+              </tr>
+              <tr>
+                <td>1ª, 2ª ou 3ª coluna</td>
+                <td>12</td>
+                <td>2 para 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="apost_align">
+          <h2 id="" class="aposta_dividida">Apostas Divididas e Racetrack</h2>
+          <div class="texo_aposta_divi">
+            <p>Além das seções Interna e Externa, as apostas também podem ser feitas na área 'racetrack' da mesa. Esta seção do layout da mesa de roleta representa a ordem real que os números aparecem na própria roleta. Clique em um dos números para colocar fichas nele, mais os dois números adjacentes (conhecidos como 'vizinhos') dos dois lados deste número.</p>
+            <p>A 'racetrack' pode ser utilizada para fazer outras quatro apostas especiais, cada qual coloca automaticamente várias fichas no layout, como mostrado na tabela a seguir.</p>
+          </div>
+          <div class="estruc_aposta_divi">
+            <table border="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <th>
+                    <strong>Nome da Aposta</strong>
+                  </th>
+                  <th>
+                    <strong>Custo da Ficha</strong>
+                  </th>
+                  <th>
+                    <strong>Números Cobertos</strong>
+                  </th>
+                  <th>
+                    <strong>Distribuição</strong>
+                  </th>
+                </tr>
+                <tr>
+                  <td>Vizinhos do Zero</td>
+                  <td>Nove fichas</td>
+                  <td>17</td>
+                  <td>0/2/3 (duas fichas), 4/7, 12/15, 18/21, 19/22, 25/26/28/29 (duas fichas), 32/35</td>
+                </tr>
+                <tr>
+                  <td>Terço da Roleta</td>
+                  <td>Seis fichas</td>
+                  <td>12</td>
+                  <td>5/8, 10/11, 13/16, 23/24, 27/30, 33/36</td>
+                </tr>
+                <tr>
+                  <td>Orphelins en Plein</td>
+                  <td>Oito fichas</td>
+                  <td>8</td>
+                  <td>1, 6, 9, 14, 17, 20, 31, 34</td>
+                </tr>
+                <tr>
+                  <td>Zero</td>
+                  <td>Quatro fichas</td>
+                  <td>7</td>
+                  <td>0/3, 12/15, 26, 32/35</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="aposta_2">
+            <p>Apostas em dois números adjacentes (divididos) da mesma cor no layout principal (ex. vermelho ou preto) podem ser apostadas em uma ação utilizando os controles para apostas divididas encontrados perto da área 'racetrack' da mesa.</p>
+          </div>
+          <div class="texto_aposta2">
+            <table border="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <th>
+                    <strong>Divididos Vermelhos (quatro apostas)</strong>
+                  </th>
+                  <th>
+                    <strong>Divididos Pretos (sete apostas)</strong>
+                  </th>
+                </tr>
+                <tr>
+                  <td>9/12</td>
+                  <td>8/11</td>
+                </tr>
+                <tr>
+                  <td>16/19</td>
+                  <td>10/11</td>
+                </tr>
+                <tr>
+                  <td>18/21</td>
+                  <td>10/13</td>
+                </tr>
+                <tr>
+                  <td>27/30</td>
+                  <td>17/20</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>26/29</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>28/29</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>28/31</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
+          <h2 id="" class="limite_aposta">Limites de Apostas</h2>
+          <div class="texto_limite">
+            <p>Seguindo uma convenção semelhante à maioria dos cassinos modernos em todo o mundo, os limites de apostas nas mesas de roleta variam, dependendo se elas cobrem as apostas internas ou externas.</p>
+            <p>A aposta externa máxima exibida em cada mesa indica o maior valor que pode ser colocado em cada (ou todas) as posições de apostas externas. Não existe um máximo acumulativo.</p>
+            <p>A aposta interna máxima de uma mesa se refere ao valor permitido para ser colocado em cada aposta de número individual (ou direta).</p>
+            <p>Todos os outros tipos de apostas internas (por exemplo a dividida, linha dupla, linha, etc.) têm o seu próprio valor máximo de aposta, relativo ao máximo do direto da mesa. A regra geral é que quanto mais números forem cobertos por uma aposta, maiores serão os limites. Por exemplo, uma aposta Pleno cobre um número e a aposta máxima pode ser de 25 fichas. Uma aposta Dividida cobre dois números e assim o dobro do máximo é permitido (50 fichas). Uma aposta de Linha cobre três números e neste exemplo a aposta máxima seria de 75 fichas, e assim por diante.</p>
+            <p>Em uma mesa com um limite de aposta máxima no pleno de 25 fichas, é possível fazer até 40 apostas de 25 fichas em torno de um número posicionado na coluna do meio do layout, como o 17 (apostas em um pleno (1), quatro divididos (8), uma linha (3), quatro quadrados (16), e duas linhas duplas (12), para um total de 1.000 fichas.</p>
+          </div>
 
+          <h2 class="retorno_jogador">O Retorno Teórico para o Jogador (RTP)</h2>
 
+          <div class="texto_retorno">
+            <p>O retorno teórico do jogador (RTP) para a Roleta, European Roulette e High Roller Roulette é 97,3%</p>
+            <p>O RTP teórico para a American Roulette é de 94,74%. O RTP teórico da aposta Five Line na American Roulette é de 92,11%.</p>
+          </div>
+        </div>
+      </table>
+    </div>
+  </body>
+</html>
