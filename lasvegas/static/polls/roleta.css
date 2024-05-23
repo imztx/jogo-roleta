@@ -313,17 +313,19 @@ body{
 
 .spinBtn{
 	position: absolute;
-	margin-top: 147px;
-	margin-left: -672px;
+	margin-top: 40px;
+	margin-left: -712px;
 	font-size: 15px;
 	cursor: pointer;
 	background-color: #ffec00;
 	padding: 10px 5px;
+	width: 220px;
+	height: 200px;
 	border-radius: 100%;
-	border: 2px solid #000;
 	color: #000;
 	font-weight: bold;
 	z-index: 1000;
+	opacity: 0;
 }
 
 .redNum{
@@ -337,7 +339,7 @@ body{
 .chipDeck, .bankContainer{
 	position: absolute;
 	margin-left: -470px;
-	margin-top: -80px;
+	margin-top: -100px;
 	width: 310px;
 	height: 52px;
 	padding: 3px 0;
@@ -352,7 +354,7 @@ body{
 }
 
 .bankContainer{
-	margin-top: -10px;
+	margin-top: -30px;
 	padding-top: 10px;
 }
 
@@ -572,7 +574,7 @@ body{
     color: white;
     background: #000;
     position: absolute;
-    margin-left: 1350px;
+    margin-left: 1255px;
     margin-top: 10px;
     padding: 4px 5px;
     top: 10px;
@@ -591,7 +593,7 @@ body{
 	color: white;
 	background: #000;
 	position: absolute;
-	margin-left: 1252px;
+	margin-left: 1152px;
 	margin-top: 10px;
 	padding: 4px 5px;
 	top: 10px;
@@ -608,8 +610,8 @@ body{
 	position: absolute;
 	width: 190px;
 	height: 35px;
-	top: 505px;
-	left: 30px;
+	top: 555px;
+	left: 225px;
     color: white;
     background-color: #000;
     padding: 3px 5px;
@@ -629,13 +631,14 @@ body{
 .caixa_roleta {
 	position: relative;
 	width: 1520px;
-	top: -55px;
+	top: -75px;
 }
 
 #roleta {
     position: absolute;
+	justify-content: left;
     top: -50%;
-    left: 12%;
+    left: 100px;
     z-index: 0;
     max-width: 440px;
     transition-duration: 0s;
@@ -644,8 +647,8 @@ body{
 .bola {
     position: absolute;
     height: 160.5px;
-    top: 138px;
-    left: 25.39%;
+    top: 140px;
+    left: 20%;
     z-index: 1;
 }
 
