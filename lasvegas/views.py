@@ -15,7 +15,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib import messages
 
-from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @login_required
@@ -41,23 +40,6 @@ def roleta(request):
     username = request.user.username
     balance = wallet.get_balance()
     return render(request, 'roleta/index.html', {'balance': balance, 'username': username})
-
-@csrf_exempt
-def add_patient(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        item_id = data.get('id')
-        new_value = data.get('new_value')
-
-        # Fetch the object and update it
-        try:
-            obj = YourModel.objects.get(id=item_id)
-            obj.your_field = new_value
-            obj.save()
-            return JsonResponse({'status': 'success'})
-        except YourModel.DoesNotExist:
-            return JsonResponse({'status': 'error', 'message': 'Object not found'})
-    return JsonResponse({'status': 'error', 'message': 'Invalid request'})
 
 def user_login(request):
     
