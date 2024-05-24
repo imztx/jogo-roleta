@@ -3,7 +3,7 @@
 const data = document.currentScript.dataset;
 var balance = parseFloat(data.balance);
 
-let bankValue = 1000;
+let bankValue = balance;
 
 function add_credit(){
 	if (balance > 100){
@@ -18,6 +18,8 @@ function add_credit(){
 	document.querySelector("aviso_sem_saldo").style.transform = 'rotate(15deg);';
 	// }
 }
+
+
 
 const casa = {
     0: '0', 1: '32', 2: '15', 3: '19', 4: '4', 5: '21', 6: '2', 7: '25', 8: '17', 9: '34', 10: '6', 11: '27', 12: '13', 13: '36', 14: '11', 15: '30', 16: '8', 17: '23', 18: '10', 19: '5', 20: '24', 21: '16', 22: '33', 23: '1', 24: '20', 25: '14', 26: '31', 27: '9', 28: '22', 29: '18', 30: '29', 31: '7', 32: '28', 33: '12', 34: '35', 35: '3', 36: '26', 37: '0'
@@ -77,67 +79,6 @@ function gameOver(){
 		};
 		notification.append(nBtn);
 	container.prepend(notification);
-}
-
-function buildWheel(){
-	let wheel = document.createElement('div');
-	wheel.setAttribute('class', 'wheel');
-
-	let outerRim = document.createElement('div');
-	outerRim.setAttribute('class', 'outerRim');
-	wheel.append(outerRim);
-
-	let numbers = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26];
-	for(i = 0; i < numbers.length; i++){
-		let a = i + 1;
-		let spanClass = (numbers[i] < 10)? 'single' : 'double';
-		let sect = document.createElement('div');
-		sect.setAttribute('id', 'sect'+a);
-		sect.setAttribute('class', 'sect');
-		let span = document.createElement('span');
-		span.setAttribute('class', spanClass);
-		span.innerText = numbers[i];
-		sect.append(span);
-		let block = document.createElement('div');
-		block.setAttribute('class', 'block');
-		sect.append(block);
-		wheel.append(sect);
-	}
-
-	let pocketsRim = document.createElement('div');
-	pocketsRim.setAttribute('class', 'pocketsRim');
-	wheel.append(pocketsRim);
-
-	let ballTrack = document.createElement('div');
-	ballTrack.setAttribute('class', 'ballTrack');
-	let ball = document.createElement('div');
-	ball.setAttribute('class', 'ball');
-	ballTrack.append(ball);
-	wheel.append(ballTrack);
-
-	let pockets = document.createElement('div');
-	pockets.setAttribute('class', 'pockets');
-	wheel.append(pockets);
-
-	let cone = document.createElement('div');
-	cone.setAttribute('class', 'cone');
-	wheel.append(cone);
-
-	let turret = document.createElement('div');
-	turret.setAttribute('class', 'turret');
-	wheel.append(turret);
-
-	let turretHandle = document.createElement('div');
-	turretHandle.setAttribute('class', 'turretHandle');
-	let thendOne = document.createElement('div');
-	thendOne.setAttribute('class', 'thendOne');
-	turretHandle.append(thendOne);
-	let thendTwo = document.createElement('div');
-	thendTwo.setAttribute('class', 'thendTwo');
-	turretHandle.append(thendTwo);
-	wheel.append(turretHandle);
-
-	container.append(wheel);
 }
 
 function buildBettingBoard(){
@@ -647,6 +588,10 @@ async function rodar_roleta() {
     
     document.getElementById("roleta").style.transitionDuration = '8s';
     document.getElementById("bola").style.transitionDuration = '9s';
+	document.getElementById("travaApostas").style.zIndex = 200;
+	document.getElementById("travaReset").style.zIndex = 200;
+	
+
     
     current_roulette_rotation += 1080 + (Math.floor(Math.random()*37))*(360/37);
     current_ball_rotation += 4320 + (Math.floor(Math.random()*37))*(360/37);
@@ -674,10 +619,16 @@ async function rodar_roleta() {
     
     document.getElementById("roleta").style.transitionDuration = '0s';
     document.getElementById("bola").style.transitionDuration = '0s';
+
 	
 	let casa_certa = parseInt(casa[Math.round(diff/(360/37))]);
 
 	winningSpin = casa_certa;
+
+	await sleep(4000);
+
+	document.getElementById("travaApostas").style.zIndex = -200;
+	document.getElementById("travaReset").style.zIndex = -200;
 
 }
 

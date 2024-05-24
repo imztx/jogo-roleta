@@ -125,7 +125,9 @@ body{
 
 /*betting table*/
 #betting_board{
-	margin-left: 31%;
+	position: absolute;
+	left: 650px;
+	top: 125px;
 	width: 500px;
     height: 315px;
     border: 1px solid;
@@ -313,18 +315,18 @@ body{
 
 .spinBtn{
 	position: absolute;
-	margin-top: 40px;
-	margin-left: -712px;
+	top: 100px;
+	left: 185px;
 	font-size: 15px;
 	cursor: pointer;
 	background-color: #ffec00;
 	padding: 10px 5px;
-	width: 220px;
-	height: 200px;
+	width: 300px;
+	height: 290px;
 	border-radius: 100%;
-	color: #000;
+	color: #ff0000;
 	font-weight: bold;
-	z-index: 1000;
+	z-index: 100;
 	opacity: 0;
 }
 
@@ -605,13 +607,63 @@ body{
     color: gold;
 }
 
+.caixa_roleta {
+	position: relative;
+	width: 1520px;
+	top: -75px;
+}
+
+#roleta {
+    position: absolute;
+	justify-content: left;
+    top: -50%;
+    left: 110px;
+    z-index: 0;
+    max-width: 440px;
+    transition-duration: 0s;
+}
+
+.bola {
+    position: absolute;
+    height: 160.5px;
+    top: 140px;
+    left: 315.5px;
+    z-index: 1;
+}
+
+.aviso_sem_saldo {
+	font-family: "Poetsen One", sans-serif;
+	position: absolute;
+	top: 480px;
+	left: 60px;
+	font-size: 20px;
+	color: rgb(255, 95, 95);
+}
+
+.travaApostas {
+	position: absolute;
+	top: 100px;
+	left: 550px;
+	z-index: -200;
+	width: 700px;
+	height: 450px;
+}
+.travaReset {
+	position: absolute;
+	top: 430px;
+	left: 395px;
+	z-index: -200;
+	width: 50px;
+	height: 50px;
+}
+
 .adicionarpontos {
 	font-family: "Poetsen One", sans-serif;
 	position: absolute;
 	width: 190px;
 	height: 35px;
-	top: 555px;
-	left: 225px;
+	top: 575px;
+	left: 235px;
     color: white;
     background-color: #000;
     padding: 3px 5px;
@@ -628,35 +680,3 @@ body{
 	color: gold;
 }
 
-.caixa_roleta {
-	position: relative;
-	width: 1520px;
-	top: -75px;
-}
-
-#roleta {
-    position: absolute;
-	justify-content: left;
-    top: -50%;
-    left: 100px;
-    z-index: 0;
-    max-width: 440px;
-    transition-duration: 0s;
-}
-
-.bola {
-    position: absolute;
-    height: 160.5px;
-    top: 140px;
-    left: 20%;
-    z-index: 1;
-}
-
-.aviso_sem_saldo {
-	font-family: "Poetsen One", sans-serif;
-	position: absolute;
-	top: 480px;
-	left: 60px;
-	font-size: 20px;
-	color: rgb(255, 95, 95);
-}
