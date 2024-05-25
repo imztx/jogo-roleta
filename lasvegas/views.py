@@ -9,11 +9,13 @@ from django.template import loader
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from core.forms import CreateUserForm, LoginForm
+from core.forms import CreateUserForm, LoginForm, CreateMov
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib import messages
+
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -39,7 +41,34 @@ def roleta(request):
     wallet = request.user.wallet
     username = request.user.username
     balance = wallet.get_balance()
-    return render(request, 'roleta/index.html', {'balance': balance, 'username': username})
+    teste = wallet.movement_set.all()[0].value
+    if request.method == 'POST':
+        form = CreateMov(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'message': 'Form submitted successfully!'})
+        else:
+            return JsonResponse({'error': 'Form submission failed.'}, status=400)
+    else:
+        form = CreateMov()
+    return render(request, 'roleta/index.html', {'form': form, 'balance': balance, 'username': username, 'teste': teste})
+
+
+# @csrf_exempt
+# def add_movement(request):
+#     if request.method == 'POST':
+#         wallet = request.user.wallet
+#         descricao = request.POST.get("descricao")
+#         valor = request.POST.get("valor")
+#         Movement.objects.create(
+#             wallet = wallet,
+#             description = descricao,
+#             value = float(valor)
+#         )
+#         return JsonResponse({'status': 'success'})
+#     return JsonResponse({'status': 'error'})
+
+
 
 def user_login(request):
     

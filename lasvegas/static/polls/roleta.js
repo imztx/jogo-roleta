@@ -2,24 +2,9 @@
 
 const data = document.currentScript.dataset;
 var balance = parseFloat(data.balance);
+var username = data.username
 
 let bankValue = balance;
-
-function add_credit(){
-	if (balance > 100){
-		balance = balance - 100
-		document.getElementById("saldo_user").innerHTML = "<i class='fas fa-coins'></i>&nbsp;Saldo: " + balance + ",0";
-		bankValue += 100
-		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
-		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
-	}
-	// else {
-	document.getElementsByClassName("aviso_sem_saldo").innerHTML = "Saldo insuficiente";
-	document.querySelector("aviso_sem_saldo").style.transform = 'rotate(15deg);';
-	// }
-}
-
-
 
 const casa = {
     0: '0', 1: '32', 2: '15', 3: '19', 4: '4', 5: '21', 6: '2', 7: '25', 8: '17', 9: '34', 10: '6', 11: '27', 12: '13', 13: '36', 14: '11', 15: '30', 16: '8', 17: '23', 18: '10', 19: '5', 20: '24', 21: '16', 22: '33', 23: '1', 24: '20', 25: '14', 26: '31', 27: '9', 28: '22', 29: '18', 30: '29', 31: '7', 32: '28', 33: '12', 34: '35', 35: '3', 36: '26', 37: '0'
@@ -264,7 +249,7 @@ function buildBettingBoard(){
 		var numberBlock = document.createElement('div');
 		numberBlock.setAttribute('class', nbClass + colourClass);
 		numberBlock.onclick = function(){
-			if(numberBlocks[a] != '2 to 1'){
+			if(numberBlocks[a] != '2 : 1'){
 				setBet(this, ''+numberBlocks[a]+'', 'inside_whole', 35);
 			}else{
 				num = (a == 12)? '3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36' : ((a == 25)? '2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35' : '1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34');
@@ -466,45 +451,86 @@ function setBet(e, n, t, o){
 
 function spin(){
 	rodar_roleta();
-	setTimeout(function(){
-		if(numbersBet.includes(winningSpin)){
-			let winValue = 0;
-			let betTotal = 0;
-			for(i = 0; i < bet.length; i++){
-				var numArray = bet[i].numbers.split(',').map(Number);
-				if(numArray.includes(winningSpin)){
-					bankValue = (bankValue + (bet[i].odds * bet[i].amt) + bet[i].amt);
-					winValue = winValue + (bet[i].odds * bet[i].amt);
-					betTotal = betTotal + bet[i].amt;
-				}
-			}
-			win(winningSpin, winValue, betTotal);
-		}
-
-		currentBet = 0;
-		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
-		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
-		
-		let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
-		let pnContent = document.getElementById('pnContent');
-		let pnSpan = document.createElement('span');
-		pnSpan.setAttribute('class', pnClass);
-		pnSpan.innerText = winningSpin;
-		pnContent.append(pnSpan);
-		pnContent.scrollLeft = pnContent.scrollWidth;
-
-		bet = [];
-		numbersBet = [];
-		removeChips();
-		wager = lastWager;
-		if(bankValue == 0 && currentBet == 0){
-			gameOver();
-		}
-	}, 10000);
+	teste();
 }
 
-function win(winningSpin, winValue, betTotal){
+
+
+async function teste(){
+	if(numbersBet.includes(winningSpin)){
+		let winValue = 0;
+		let betTotal = 0;
+		for(i = 0; i < bet.length; i++){
+			var numArray = bet[i].numbers.split(',').map(Number);
+			if(numArray.includes(winningSpin)){
+				bankValue = (bankValue + (bet[i].odds * bet[i].amt) + bet[i].amt);
+				winValue = winValue + (bet[i].odds * bet[i].amt);
+				betTotal = betTotal + bet[i].amt;
+			}
+		}
+		win(winningSpin, winValue, betTotal);
+	}
+	else { 
+		
+		document.getElementById('id_value').value = -currentBet;
+		var opcoes = document.getElementById('id_wallet').length;
+		document.getElementById('id_description').innerHTML = 'Resultado aposta: -' + currentBet;
+		for (let i = 0; i < opcoes; i++) {
+			if (document.getElementById('id_wallet').options[i].text == username){
+				document.getElementById('id_wallet').value = i.toString();
+				break;
+			}
+		}
+		document.getElementById('submitForm').click();
+	}
+
+	await sleep(10000);
+	
+	currentBet = 0;
+	document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
+	document.getElementById("saldo_user").innerHTML = "<i class='fas fa-coins'></i>&nbsp;Saldo: " + bankValue + ",0";
+	document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+	
+	
+	let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
+	let pnContent = document.getElementById('pnContent');
+	let pnSpan = document.createElement('span');
+	pnSpan.setAttribute('class', pnClass);
+	pnSpan.innerText = winningSpin;
+	pnContent.append(pnSpan);
+	pnContent.scrollLeft = pnContent.scrollWidth;
+
+	bet = [];
+	numbersBet = [];
+	removeChips();
+	wager = lastWager;
+	if(bankValue == 0 && currentBet == 0){
+		gameOver();
+	}
+}
+
+
+
+async function win(winningSpin, winValue, betTotal){
 	if(winValue > 0){
+		let controle = winValue + betTotal - currentBet;
+
+
+		if (controle != 0){
+			document.getElementById('id_value').value = controle;
+			var opcoes = document.getElementById('id_wallet').length;
+			document.getElementById('id_description').innerHTML = 'Resultado aposta: ' + controle;
+			for (let i = 0; i < opcoes; i++) {
+				if (document.getElementById('id_wallet').options[i].text == username){
+					document.getElementById('id_wallet').value = i.toString();
+					break;
+				}
+			}
+			document.getElementById('submitForm').click();
+		}
+
+		await sleep(10000);
+
 		let notification = document.createElement('div');
 		notification.setAttribute('id', 'notification');
 			let nSpan = document.createElement('div');
@@ -521,17 +547,26 @@ function win(winningSpin, winValue, betTotal){
 				nsWin.setAttribute('class', 'nsWin');
 					let nsWinBlock = document.createElement('div');
 					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Aposta: ' + betTotal;
+					nsWinBlock.innerText = 'Aposta: -' + currentBet;
 					nSpan.append(nsWinBlock);
 					nsWin.append(nsWinBlock);
 					nsWinBlock = document.createElement('div');
 					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Ganho: ' + winValue;
+					let x = winValue + betTotal;
+					nsWinBlock.innerText = 'Ganho: +' + x;
 					nSpan.append(nsWinBlock);
 					nsWin.append(nsWinBlock);
 					nsWinBlock = document.createElement('div');
 					nsWinBlock.setAttribute('class', 'nsWinBlock');
-					nsWinBlock.innerText = 'Total: ' + (winValue + betTotal);
+					if (controle > 0){
+						nsWinBlock.innerText = 'Total: +' + (controle);
+					}
+					else if (controle < 0){
+						nsWinBlock.innerText = 'Total: -' + (controle);
+					}
+					else {
+						nsWinBlock.innerText = 'Total: ' + (controle);
+					}
 					nsWin.append(nsWinBlock);
 				nSpan.append(nsWin);
 			notification.append(nSpan);
@@ -543,6 +578,7 @@ function win(winningSpin, winValue, betTotal){
 			notification.remove();
 		}, 6000);
 	}
+	
 }
 
 function removeBet(e, n, t, o){
@@ -590,7 +626,7 @@ async function rodar_roleta() {
     document.getElementById("bola").style.transitionDuration = '9s';
 	document.getElementById("travaApostas").style.zIndex = 200;
 	document.getElementById("travaReset").style.zIndex = 200;
-	
+
 
     
     current_roulette_rotation += 1080 + (Math.floor(Math.random()*37))*(360/37);
@@ -604,16 +640,10 @@ async function rodar_roleta() {
     } else {
         var diff = current_ball_rotation%360 - current_roulette_rotation%360
     }
+	
+	let casa_certa = parseInt(casa[Math.round(diff/(360/37))]);
 
-
-    if (Math.round(diff/(360/37)) == 0 || Math.round(diff/(360/37)) == 37) {
-        var cor = 'Verde'
-    } else if (Math.round(diff/(360/37))%2 == 1) {
-        var cor = 'Vermelho'
-    } else {
-        var cor = 'Preto'
-    }
-
+	winningSpin = casa_certa;
     await sleep(8000);
   
     
@@ -621,9 +651,6 @@ async function rodar_roleta() {
     document.getElementById("bola").style.transitionDuration = '0s';
 
 	
-	let casa_certa = parseInt(casa[Math.round(diff/(360/37))]);
-
-	winningSpin = casa_certa;
 
 	await sleep(4000);
 
