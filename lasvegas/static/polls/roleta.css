@@ -665,3 +665,24 @@ body{
 	z-index: -1000;
 }
 
+#caio1 {
+	position: absolute;
+	z-index: -15000;
+	opacity: 0;
+	bottom: 0.01px;
+	left: -2%;
+	transition-property: opacity;
+	transition-timing-function: linear;
+	transition-duration: 1s;
+}
+#caio2 {
+	position: absolute;
+	z-index: -15000;
+	opacity: 0;
+	left: 65%;
+	bottom: 0.01px;
+	transition-property: opacity;
+	transition-timing-function: linear;
+	transition-duration: 1s;
+}
+

@@ -507,6 +507,11 @@ async function win(winningSpin, winValue, betTotal, aposta_total){
 	if(betTotal > 0){
 		await sleep(10000);
 
+		document.getElementById("caio1").style.zIndex = 1500;
+		document.getElementById("caio2").style.zIndex = 1500;
+		document.getElementById("caio1").style.opacity = 1;
+		document.getElementById("caio2").style.opacity = 1;
+
 		let notification = document.createElement('div');
 		notification.setAttribute('id', 'notification');
 			let nSpan = document.createElement('div');
@@ -544,7 +549,13 @@ async function win(winningSpin, winValue, betTotal, aposta_total){
 		}, 3000);
 		setTimeout(function(){
 			notification.remove();
-		}, 6000);
+			document.getElementById("caio1").style.opacity = 0;
+			document.getElementById("caio2").style.opacity = 0;
+		}, 5000);
+		setTimeout(function(){
+			document.getElementById("caio1").style.zIndex = -1500;
+			document.getElementById("caio2").style.zIndex = -1500;
+		}, 6000)
 	}
 	
 }
