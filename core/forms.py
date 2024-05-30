@@ -23,7 +23,5 @@ class LoginForm(AuthenticationForm):
         password = forms.CharField(widget=PasswordInput())
             
             
-class CreateMov(forms.ModelForm):
-    class Meta:
-        model = Movement
-        fields = ['wallet', 'description', 'value']
+class CreateBet(forms.Form):
+    bet = forms.CharField(label='Sua bet', widget=TextInput())
