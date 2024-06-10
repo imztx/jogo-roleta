@@ -477,6 +477,11 @@ async function teste(aposta_total, aposta_vencedora, lucro){
 	bankValue = bankValue + aposta_vencedora;
 	win(winningSpin, winValue, betTotal, aposta_total);
 	await sleep(10000);
+
+	if (aposta_vencedora == 0){
+		document.getElementById("caio_triste").style.zIndex = 15000;
+		document.getElementById("caio_triste").style.opacity = 1;
+	}
 	
 	currentBet = 0;
 	document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
@@ -499,6 +504,14 @@ async function teste(aposta_total, aposta_vencedora, lucro){
 	if(bankValue == 0 && currentBet == 0){
 		gameOver();
 	}
+
+	await sleep(3000);
+
+	document.getElementById("caio_triste").style.opacity = 0;
+
+	await sleep(1000);
+
+	document.getElementById("caio_triste").style.zIndex = -1500;
 }
 
 

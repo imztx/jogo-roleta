@@ -94,6 +94,8 @@ def aposta(aposta, balance):
         
         if casa_certa in numeros and odd == 36/len(numeros) - 1:
             aposta_vencedora += aposta_local * (odd + 1)
+        elif odd != 36/len(numeros) - 1:
+            return
         
     print('\n\naposta total:', aposta_total, '\naposta vencedora:', aposta_vencedora, '\ncasa certa:', casa_certa)
     
