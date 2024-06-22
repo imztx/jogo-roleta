@@ -1,96 +1,118 @@
-# Roleta
+# Projeto Roleta com Django
+## Visão Geral
+Este projeto foi desenvolvido como parte da disciplina de Engenharia de Software no curso de Ciência da Computação. O objetivo é criar um jogo de roleta com páginas de login, cadastro, tela inicial e a página do jogo. Na página do jogo, os jogadores têm acesso à roleta, tabela, fichas e saldo. As movimentações são realizadas no backend, garantindo maior segurança mesmo que o jogo utilize dinheiro fictício. Cada novo usuário registrado inicia com um saldo de 1000 na carteira (wallet).
+
+Além disso, incluímos uma brincadeira com nosso coordenador: gifs dele são exibidos quando o jogador vence ou perde, tornando o jogo mais divertido e personalizado.
+
+*********
+## Sumário
+1. [Requisitos do Sistema](#requisitos-do-sistema)
+2. [Instalação](#instalação)
+3. [Configuração](#configuração)
+4. [Uso](#uso)
+5. [Estrutura de Diretórios](#estrutura-de-diretórios)
+6. [Licença](#licença)
+7. [Contribuição](#contribuição)
+
+********
+
+## Requisitos do Sistema
+*  Python 3.x
+*  Django 5.0
+*  Outros pacotes listados no arquivo .gitlab-ci.yml e requirements.txt
+
+## Instalação
+Clone o repositório do projeto:
+
+`git clone <URL_DO_REPOSITORIO>`
+`cd <NOME_DO_REPOSITORIO>` <br>
+Crie um ambiente virtual e ative-o:
+`python -m venv venv`
+`source venv/bin/activate`
+
+No Windows use `venv\Scripts\activate`
+
+Instale as dependências:
+
+`pip install -r requirements.txt`
 
 
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+## Configuração
+Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/uniroleta/roleta.git
-git branch -M main
-git push -uf origin main
+SECRET_KEY='sua-chave-secreta-aqui'
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+CSRF_TRUSTED_ORIGINS=http://localhost,http://127.0.0.1
 ```
+Configure o banco de dados no arquivo settings.py se necessário.
 
-## Integrate with your tools
+## Uso
+Execute as migrações:
 
-- [ ] [Set up project integrations](https://gitlab.com/uniroleta/roleta/-/settings/integrations)
+`python manage.py makemigrations`<br>
+`python manage.py migrate`<br>
+Crie um superusuário para acessar a interface de administração:
 
-## Collaborate with your team
+`python manage.py createsuperuser`<br>
+Inicie o servidor de desenvolvimento:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+`python manage.py runserver`<br>
+Abra o navegador e vá para a URL exibida no terminal (geralmente http://127.0.0.1:8000/).
 
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Estrutura de Diretórios
+- ROLETA/<br>
+	- __pycache__/<br>
+	- .pytest_cache/<br>
+	- .vscode/<br>
+  -	core/<br>
+    - __pycache__/<br>
+	 - __init__.py<br>
+	 - asgi.py<br>
+	 - forms.py<br>
+	 - settings.py<br>
+	 - urls.py<br>
+	 - wsgi.py<br>
+	- htmlcov/<br>
+	- lasvegas/<br>
+		- __pycache__/<br>
+		- migrations/<br>
+		- static/<br>
+		- templates/<br>
+		- tests/<br>
+		 - __init__.py<br>
+		 - admin.py<br>
+		 - apps.py<br>
+		 - models.py<br>
+		 - urls.py<br>
+		 - views.py<br>
+	- .coverage<br>
+	- .env<br>
+	- .gitgnore<br>
+	- db.sqlite3<br>
+	- Dockerfile<br>
+	- entrypoint.sh<br>
+	- manage.py<br>
+	- README.md<br>
+	- roleta.py<br>
+	teste.py<br>
 
 
-teste
+## Tecnologias Utilizadas
+* Linguagem de Programação: Python 3.x
+* Framework Web: Django 5.0
+* Banco de Dados: SQLite (padrão)
+* Controle de Versão: Git
+* Integração Contínua: GitLab CI
+* Containerização: Docker
+* Testes: Coverage e unittest
+* Outras Bibliotecas:
+   * dj-database-url
+   * python-decouple
+   * Django humanize
+
+## Licença
+Este projeto não possui uma licença definida.
+
+## Contribuição
+Este projeto foi desenvolvido por um grupo de estudantes do segundo ano e pode não seguir as melhores práticas de código e organização. Contribuições são bem-vindas para melhorar o projeto.
