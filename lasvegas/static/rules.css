@@ -1,6 +1,6 @@
 body {
     font-family: "Poetsen One", sans-serif;
-    background-color: #76b852;
+    background-color:#404040;
 }
 .retangulo {
     width: auto;
@@ -57,11 +57,11 @@ body {
   }
 
   .regras_roleta {
-    color: black;
+    color: #F5FFFA;
 }
 
 .apost_align {
-  color: black;
+  color: white;
 }
 
 table, th, td {
